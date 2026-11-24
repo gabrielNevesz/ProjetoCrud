@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cad.css">
+    <title>Cadastro</title>
+</head>
+<body>
+    <h1>Cadastro</h1>
+    <form method="post" action="cad.php">
+        <ul>
+            <li>
+                <label for="txtnome">Nome</label>
+                <input type="text" name="txtnome" id="txtnome" maxlength="40" required>
+            </li>
+
+            <li>
+                <label for="txtemail">E-mail</label>
+                <input type="text" name="txtemail" id="txtemail" maxlength="40" required>
+            </li>
+
+            <li>
+                <label for="txtsenha">Senha</label>
+                <input type="password" name="txtsenha" id="txtsenha" maxlength="8" required>
+            </li>
+
+            <br><br>
+
+            <li>
+                <label for="txtsexo">Sexo: </label>
+                <br>
+                <input type="radio" value="F" name="txtsexo" id="txtsexof" checked>Feminino <br>
+                <input type="radio" value="M" name="txtsexo" id="txtsexom">Masculino
+            </li>
+
+            <li>
+                <label for="txtdata">Data</label>
+                <input type="date" name="txtdata" id="txtdata">
+            </li>
+
+            <br><br>
+            <input type="submit" value="Cadastrar">
+            <input type="reset" value="Limpar" onClick="document.getElementById('txtnome').focus()">
+            <input type="button" value="Menu" onClick="location.href='index.html'">
+        </ul>
+    </form>
+</body>
+</html>

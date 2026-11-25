@@ -1,11 +1,12 @@
 <?php
     echo "<link rel='stylesheet' type='text/css' href='formata.css'/>";
-    include 'conexao.php';
-	$listar=$cmd->query("select * from tbteste");
-	$total_registros=$listar->rowCount();
+   	include 'conexao.php';
+	$nome=$_POST['txtpesq'];
+    $pesq=$cmd->query("select * from tbprojeto where nome_p like '$nome%'");
+	$total_registros =$pesq->rowCount();
     if ($total_registros > 0)
-    {
-        echo "<h1>Listar Registros</h1>";
+     {
+        echo "<h1>Resultado do Filtro Aplicado</h1>";
         echo "<hr/>";
         echo "<table>";
         echo "<tr>
@@ -22,14 +23,14 @@
                 <th>Nascimento</th>
               </tr>";
 				
-        while($linha=$listar->fetch(PDO::FETCH_ASSOC))
+        while($linha=$pesq->fetch(PDO::FETCH_ASSOC))
         {
-            $vcodi=$linha['codi_t'];
-            $vnome=$linha['nome_t'];
-            $vemai=$linha['emai_t'];
-            $vsenh=$linha['senh_t'];
-			$vsexo=$linha['sexo_t'];
-            $vdtna=$linha['dtna_t'];
+            $vcodi=$linha['codi_p'];
+            $vnome=$linha['nome_p'];
+            $vemai=$linha['emai_p'];
+            $vsenh=$linha['senh_p'];
+			$vsexo=$linha['sexo_p'];
+            $vdtna=$linha['dtna_p'];
             echo "<tr>
                     <td>$vcodi</td>
                     <td>$vnome</td>
@@ -41,13 +42,13 @@
 		}
 	    echo "</table>";
         echo "<br/><br/>";
-        echo "<a class='botao_menu' href='index.html'>Menu</a>";/*ou window.history.back()*/
+        echo "<a class='botao_menu' href='pesq.html'>Nova Pesquisa</a>";/*ou window.history.back()*/
 	}
     else
     {
-        echo "<script language=javascript>
-                window.alert('Não existem registros para exibir!!!');
-                location.href='index.html'; 
-              </script>";
+        echo "<script language=javascript> 
+                alert('Não existem registros para exibir!!!'); 
+                location.href='pesq.html'; 
+            </script>";
     }
 ?>

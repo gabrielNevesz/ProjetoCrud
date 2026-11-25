@@ -11,4 +11,4 @@ dtna_p date
 )
 
 select * from tbprojeto;
-describe tbprojeto;saz\
+describe tbprojeto;
